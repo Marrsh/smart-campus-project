@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
@@ -5,71 +7,104 @@ void main() {
   runApp(MyApp());
 }
 
+class NavButtonProperties {
+  const NavButtonProperties(
+      {required this.icon, required this.colour, required this.label, this.isCentral = false});
+  final IconData icon;
+  final Color? colour;
+  final String label;
+  final bool isCentral;
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("height is $logicalScreenSize");
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.amber), // declare theme data for this widget?
-      home: Scaffold(//Like stacks in swift, takes in the elements of the widget (body, appbar etc..)
-        appBar: AppBar(title: Center(child: Text('University Name'))),
-      body: _NavBar(),
+        theme: ThemeData(
+            primaryColor: Colors.amber), // declare theme data for this widget?
+        home: Scaffold(
+          //Like stacks in swift, takes in the elements of the widget (body, appbar etc..)
+          appBar: AppBar(title: Center(child: Text('University Name'))),
+          body: Stack(
+            children: [
+              Positioned(
+                  bottom: 0,
+                  child: _NavBar()
+              )
+            ],
+          )
         )
-      );
-
+    );
   }
 }
 
 class _NavBar extends StatelessWidget {
   @override
+  List<NavButtonProperties> navButtons = [
+    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
+    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
+    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'nfc', isCentral: true),
+    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
+    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'
+    ),
+  ];
+
   Widget build(BuildContext context) {
-    return Stack(
-        children: [
-          Positioned(
-              bottom: 0,
-              left: 0,
-              child: Container(
-                width: logicalScreenSize.width,
-                height: height10,
-                color: Colors.blue,
-                child: Row(
-                  children: [
-                    _NavButton(),
-                    _NavButton(),
-                    _CentralNavButton(),
-                    _NavButton(),
-                    _NavButton()
-                  ],
-                ),
-              )
-          ),
-        ],
+    return Container(
+      width: logicalScreenSize.width,
+      height: height10,
+      color: Colors.blue,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            for (var i = 0; i < navButtons.length; i++)
+      if (navButtons[i].isCentral)
+        _CentralNavButton()
+      else
+        _NavButton(
+            navButtonProperties: navButtons[i],
+            isMarginLeft: (i <= 2) ? true : false
+        )
+          ]
+      )
     );
   }
 }
 
 class _NavButton extends StatelessWidget {
-
+  _NavButton({required this.navButtonProperties, required this.isMarginLeft});
+  final isMarginLeft;
+  final navButtonProperties;
   Widget build(BuildContext context) {
-    return Container(
-            width: height10,
-            height: height10,
-            color: Colors.amber,
-            margin: const EdgeInsets.only(left:3),
+    return Expanded(
+      flex: 2,
+      child:
+        Icon(
+          navButtonProperties.icon,
+          color: navButtonProperties.colour,
+          size: 50,
+          semanticLabel: navButtonProperties.label,
+        )
     );
   }
 }
 
 class _CentralNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialButton(
-      color: Colors.yellow,
-      shape: CircleBorder(),
-      onPressed: () {},
-        child: Text(
-          'A circle button',
-          style: TextStyle(color: Colors.white, fontSize: 5),
-      ),
+    return Expanded(
+        flex: 4,
+        child:OverflowBox(
+            maxHeight: 150,
+            // margin: const EdgeInsets.only(bottom: 150),
+            child:Container(
+              margin: const EdgeInsets.only(bottom: 150),
+              child: Icon(
+                Icons.ac_unit,
+                color: Colors.yellow,
+                size: 80,
+              )
+            )
+        )
     );
   }
 }
