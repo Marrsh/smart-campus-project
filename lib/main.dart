@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
               Positioned(
                   bottom: 0,
                   child: _NavBar()
+                // child: _CentralNavButton(),
               )
             ],
           )
@@ -41,11 +42,11 @@ class MyApp extends StatelessWidget {
 class _NavBar extends StatelessWidget {
   @override
   List<NavButtonProperties> navButtons = [
-    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
-    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
+    NavButtonProperties(icon: Icons.today_outlined, colour: Colors.grey[300], label: 'Timetable'),
+    NavButtonProperties(icon: Icons.badge_outlined, colour: Colors.grey[300], label: 'ID'),
     NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'nfc', isCentral: true),
-    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'),
-    NavButtonProperties(icon: Icons.calendar_today, colour: Colors.grey[300], label: 'test'
+    NavButtonProperties(icon: Icons.door_front_door_outlined, colour: Colors.grey[300], label: 'Rooms'),
+    NavButtonProperties(icon: Icons.local_library_outlined, colour: Colors.grey[300], label: 'Library'
     ),
   ];
 
@@ -58,13 +59,10 @@ class _NavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             for (var i = 0; i < navButtons.length; i++)
-      if (navButtons[i].isCentral)
-        _CentralNavButton()
-      else
-        _NavButton(
-            navButtonProperties: navButtons[i],
-            isMarginLeft: (i <= 2) ? true : false
-        )
+              if (navButtons[i].isCentral)
+                _CentralNavButton()
+              else
+                _NavButton(navButtonProperties: navButtons[i]),
           ]
       )
     );
@@ -72,18 +70,36 @@ class _NavBar extends StatelessWidget {
 }
 
 class _NavButton extends StatelessWidget {
-  _NavButton({required this.navButtonProperties, required this.isMarginLeft});
-  final isMarginLeft;
+  _NavButton({required this.navButtonProperties});
   final navButtonProperties;
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child:
-        Icon(
-          navButtonProperties.icon,
-          color: navButtonProperties.colour,
-          size: 50,
-          semanticLabel: navButtonProperties.label,
+    return
+    Padding(padding: EdgeInsets.only(left: 15,bottom: 10, right: 15, top: 5),
+    child:
+        GestureDetector(
+          onTap: () {
+            print('test');
+          },
+          child:Column(
+        children: [
+          Expanded(
+          flex: 2,
+          child:
+          Icon(
+            navButtonProperties.icon,
+            color: navButtonProperties.colour,
+            size: 35,
+            semanticLabel: navButtonProperties.label,
+          )
+      ),
+          Text(navButtonProperties.label,style: TextStyle(
+            color: navButtonProperties.colour,
+            fontFamily: 'Roboto',
+            fontSize: 10
+          )
+          )
+        ],
+      ),
         )
     );
   }
@@ -92,17 +108,24 @@ class _NavButton extends StatelessWidget {
 class _CentralNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
-        flex: 4,
+        flex: 3,
         child:OverflowBox(
             maxHeight: 150,
-            // margin: const EdgeInsets.only(bottom: 150),
-            child:Container(
-              margin: const EdgeInsets.only(bottom: 150),
-              child: Icon(
-                Icons.ac_unit,
-                color: Colors.yellow,
-                size: 80,
-              )
+            child:
+            Column(
+              children: [
+                Container(
+                  color: Colors.red,
+                  child: Icon(
+                    Icons.contactless_outlined,
+                    color: Colors.yellow,
+                    size: 85,
+                  )
+                ),
+                Container(
+                  height: 150,
+                )
+              ],
             )
         )
     );
