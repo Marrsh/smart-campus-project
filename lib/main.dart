@@ -16,10 +16,16 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           //Like stacks in swift, takes in the elements of the widget (body, appbar etc..)
           appBar: AppBar(title: Center(child: Text('University Name')), backgroundColor: yellow,foregroundColor: Colors.black,),
-          body: Container(
-            color: Colors.grey[100],
-          ),
-          bottomNavigationBar: NavBar(),
+            body: Stack(
+            children: [
+            Positioned(
+            bottom: 0,
+            child: NavBar()
+          // child: _CentralNavButton(),
+        )
+            ]
+          )
+          // bottomNavigationBar: NavBar(),
         )
     );
   }

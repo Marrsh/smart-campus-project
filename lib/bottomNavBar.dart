@@ -103,7 +103,7 @@ class _CentralNavButton extends StatelessWidget {
                   child: Icon(
                     Icons.contactless_outlined,
                     color: Colors.white,
-                    size: 55,
+                    size: height5,
                   )
               )
           ),
