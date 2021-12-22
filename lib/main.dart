@@ -25,15 +25,8 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           //Like stacks in swift, takes in the elements of the widget (body, appbar etc..)
           appBar: AppBar(title: Center(child: Text('University Name'))),
-          body: Stack(
-            children: [
-              Positioned(
-                  bottom: 0,
-                  child: _NavBar()
-                // child: _CentralNavButton(),
-              )
-            ],
-          )
+
+          bottomNavigationBar: _NavBar(),
         )
     );
   }
@@ -56,7 +49,8 @@ class _NavBar extends StatelessWidget {
       height: height10,
       color: Colors.blue,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             for (var i = 0; i < navButtons.length; i++)
               if (navButtons[i].isCentral)
@@ -73,61 +67,52 @@ class _NavButton extends StatelessWidget {
   _NavButton({required this.navButtonProperties});
   final navButtonProperties;
   Widget build(BuildContext context) {
-    return
-    Padding(padding: EdgeInsets.only(left: 15,bottom: 10, right: 15, top: 5),
-    child:
-        GestureDetector(
-          onTap: () {
-            print('test');
-          },
-          child:Column(
-        children: [
-          Expanded(
-          flex: 2,
-          child:
-          Icon(
-            navButtonProperties.icon,
-            color: navButtonProperties.colour,
-            size: 35,
-            semanticLabel: navButtonProperties.label,
-          )
-      ),
-          Text(navButtonProperties.label,style: TextStyle(
-            color: navButtonProperties.colour,
-            fontFamily: 'Roboto',
-            fontSize: 10
-          )
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Icon(
+          navButtonProperties.icon,
+          color: navButtonProperties.colour,
+          size: 35,
+          semanticLabel: navButtonProperties.label,
+        ),
+        Text(
+            navButtonProperties.label,
+            style: TextStyle(
+                color: navButtonProperties.colour,
+                fontFamily: 'Roboto',
+                fontSize: 10
+            )
         )
+      ],
     );
   }
 }
 
 class _CentralNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Expanded(
-        flex: 3,
-        child:OverflowBox(
-            maxHeight: 150,
-            child:
-            Column(
-              children: [
-                Container(
+    return
+      Container(
+        width: width25,
+        child: OverflowBox(
+          maxHeight: height50,
+          child: SizedBox(
+              child: Container(
+                  decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                   color: Colors.red,
+                  ),
+                  padding: EdgeInsets.all(mdPadding),
+                  margin:EdgeInsets.only(bottom: height10),
                   child: Icon(
                     Icons.contactless_outlined,
-                    color: Colors.yellow,
-                    size: 85,
+                    size: 55,
                   )
-                ),
-                Container(
-                  height: 150,
-                )
-              ],
-            )
-        )
-    );
+              )
+          ),
+        ),
+      );
   }
 }
