@@ -12,6 +12,8 @@ class NavButtonProperties {
 
 class NavBar extends StatelessWidget {
   @override
+
+  // NavButton({required this.activePage});
   List<NavButtonProperties> navButtons = [
     NavButtonProperties(icon: Icons.today_outlined, colour: Colors.grey, label: 'Timetable'),
     NavButtonProperties(icon: Icons.badge_outlined, colour: Colors.grey, label: 'ID'),
@@ -22,6 +24,7 @@ class NavBar extends StatelessWidget {
   ];
 
   Widget build(BuildContext context) {
+
     return Container(
         width: logicalScreenSize.width,
         height: height10,
@@ -37,13 +40,13 @@ class NavBar extends StatelessWidget {
         ),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               for (var i = 0; i < navButtons.length; i++)
                 if (navButtons[i].isCentral)
                   _CentralNavButton()
                 else
-                  _NavButton(navButtonProperties: navButtons[i]),
+                 _NavButton(navButtonProperties: navButtons[i]),
             ]
         )
     );
@@ -62,7 +65,7 @@ class _NavButton extends StatelessWidget {
         Icon(
           navButtonProperties.icon,
           color: navButtonProperties.colour,
-          size: 35,
+          size: width9,
           semanticLabel: navButtonProperties.label,
         ),
         Text(
@@ -82,7 +85,7 @@ class _CentralNavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Container(
-        width: width25,
+        width: width20,
         child: OverflowBox(
           maxHeight: height50,
           child: SizedBox(
@@ -103,7 +106,7 @@ class _CentralNavButton extends StatelessWidget {
                   child: Icon(
                     Icons.contactless_outlined,
                     color: Colors.white,
-                    size: height5,
+                    size: width10,
                   )
               )
           ),

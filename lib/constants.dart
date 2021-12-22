@@ -1,8 +1,15 @@
 // import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 
-
 const String SUCCESS_MESSAGE=" You will be contacted by us very soon.";
+
+enum Page {
+  Timetable,
+  ID,
+  NFC,
+  Rooms,
+  Library
+}
 
 var physicalScreenSize = window.physicalSize;
 var pixelRatio = window.devicePixelRatio;
@@ -10,7 +17,12 @@ var logicalScreenSize = window.physicalSize / pixelRatio;
 
 var width3 = logicalScreenSize.width * 0.03;
 var width4 = logicalScreenSize.width * 0.04;
+var width5 = logicalScreenSize.width * 0.05;
+var width8 = logicalScreenSize.width * 0.08;
+var width9 = logicalScreenSize.width * 0.09;
+
 var width10 = logicalScreenSize.width * 0.1;
+var width20 = logicalScreenSize.width * 0.2;
 var width25 = logicalScreenSize.width * 0.25;
 
 var height1 = logicalScreenSize.height * 0.01;
