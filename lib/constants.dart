@@ -24,3 +24,8 @@ var height50 = logicalScreenSize.height * 0.5;
 const smPadding = 5.0;
 const mdPadding = 15.0;
 const lgPadding = 30.0;
+
+
+const blue = const Color(0xFF007AFF);
+const orange = const Color(0xFFFFB900);
+const yellow = const Color(0xFFFFCC00);
