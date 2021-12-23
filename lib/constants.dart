@@ -22,6 +22,7 @@ var width8 = logicalScreenSize.width * 0.08;
 var width9 = logicalScreenSize.width * 0.09;
 
 var width10 = logicalScreenSize.width * 0.1;
+var width15 = logicalScreenSize.width * 0.15;
 var width20 = logicalScreenSize.width * 0.2;
 var width25 = logicalScreenSize.width * 0.25;
 

@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.christopher_marsh.student_companion">
+    <uses-permission android:name="android.permission.NFC"/>
    <application
         android:label="student_companion"
         android:name="${applicationName}"

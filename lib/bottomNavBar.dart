@@ -57,14 +57,12 @@ class NavBar extends StatelessWidget {
 class _NavButton extends StatelessWidget {
   _NavButton({required this.navButtonProperties});
   final navButtonProperties;
+  // Color colour = Colors.grey; 
   Widget build(BuildContext context) {
     return
     GestureDetector(
       onTap: () {
         Navigator.pushReplacementNamed(context, navButtonProperties.routeName,);
-
-
-
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
