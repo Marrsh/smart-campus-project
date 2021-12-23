@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:student_companion/Pages/timetablePage.dart';
 import 'constants.dart';
 
 class NavButtonProperties {
-  const NavButtonProperties(
-      {required this.icon, required this.colour, required this.label, this.isCentral = false});
+ NavButtonProperties({required this.routeName, required this.icon, required this.colour, required this.label, this.isCentral = false});
+  final String routeName;
   final IconData icon;
   final Color? colour;
   final String label;
@@ -15,11 +16,11 @@ class NavBar extends StatelessWidget {
 
   // NavButton({required this.activePage});
   List<NavButtonProperties> navButtons = [
-    NavButtonProperties(icon: Icons.today_outlined, colour: Colors.grey, label: 'Timetable'),
-    NavButtonProperties(icon: Icons.badge_outlined, colour: Colors.grey, label: 'ID'),
-    NavButtonProperties(icon: Icons.calendar_today, colour: blue, label: 'nfc', isCentral: true),
-    NavButtonProperties(icon: Icons.door_front_door_outlined, colour: Colors.grey, label: 'Rooms'),
-    NavButtonProperties(icon: Icons.local_library_outlined, colour: Colors.grey, label: 'Library'
+    NavButtonProperties(routeName: '/timetable', icon: Icons.today_outlined, colour: Colors.grey, label: 'Timetable'),
+    NavButtonProperties(routeName: '/id',icon: Icons.badge_outlined, colour: Colors.grey, label: 'ID'),
+    NavButtonProperties(routeName: '/nfc',icon: Icons.calendar_today, colour: blue, label: 'nfc', isCentral: true),
+    NavButtonProperties(routeName: '/floorplan',icon: Icons.door_front_door_outlined, colour: Colors.grey, label: 'Rooms'),
+    NavButtonProperties(routeName: '/library',icon: Icons.local_library_outlined, colour: Colors.grey, label: 'Library'
     ),
   ];
 
@@ -46,7 +47,7 @@ class NavBar extends StatelessWidget {
                 if (navButtons[i].isCentral)
                   _CentralNavButton()
                 else
-                 _NavButton(navButtonProperties: navButtons[i]),
+                  _NavButton(navButtonProperties: navButtons[i])
             ]
         )
     );
@@ -57,26 +58,35 @@ class _NavButton extends StatelessWidget {
   _NavButton({required this.navButtonProperties});
   final navButtonProperties;
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Icon(
-          navButtonProperties.icon,
-          color: navButtonProperties.colour,
-          size: width9,
-          semanticLabel: navButtonProperties.label,
-        ),
-        Text(
-            navButtonProperties.label,
-            style: TextStyle(
-                color: navButtonProperties.colour,
-                fontFamily: 'Roboto',
-                fontSize: 10
-            )
-        )
-      ],
+    return
+    GestureDetector(
+      onTap: () {
+        Navigator.pushReplacementNamed(context, navButtonProperties.routeName,);
+
+
+
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Icon(
+            navButtonProperties.icon,
+            color: navButtonProperties.colour,
+            size: width9,
+            semanticLabel: navButtonProperties.label,
+          ),
+          Text(
+              navButtonProperties.label,
+              style: TextStyle(
+                  color: navButtonProperties.colour,
+                  fontFamily: 'Roboto',
+                  fontSize: 10
+              )
+          )
+        ]
+      )
     );
   }
 }
