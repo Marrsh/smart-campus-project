@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_companion/Pages/timetablePage.dart';
+import 'package:student_companion_java/Pages/timetablePage.dart';
 import 'constants.dart';
 
 class NavButtonProperties {
@@ -18,10 +18,9 @@ class NavBar extends StatelessWidget {
   List<NavButtonProperties> navButtons = [
     NavButtonProperties(routeName: '/timetable', icon: Icons.today_outlined, colour: Colors.grey, label: 'Timetable'),
     NavButtonProperties(routeName: '/id',icon: Icons.badge_outlined, colour: Colors.grey, label: 'ID'),
-    NavButtonProperties(routeName: '/nfc',icon: Icons.calendar_today, colour: blue, label: 'nfc', isCentral: true),
+    NavButtonProperties(routeName: '/nfcTest',icon: Icons.calendar_today, colour: blue, label: 'nfc', isCentral: true),
     NavButtonProperties(routeName: '/floorplan',icon: Icons.door_front_door_outlined, colour: Colors.grey, label: 'Rooms'),
-    NavButtonProperties(routeName: '/library',icon: Icons.local_library_outlined, colour: Colors.grey, label: 'Library'
-    ),
+    NavButtonProperties(routeName: '/library',icon: Icons.local_library_outlined, colour: Colors.grey, label: 'Library'),
   ];
 
   Widget build(BuildContext context) {
@@ -57,7 +56,6 @@ class NavBar extends StatelessWidget {
 class _NavButton extends StatelessWidget {
   _NavButton({required this.navButtonProperties});
   final navButtonProperties;
-  // Color colour = Colors.grey; 
   Widget build(BuildContext context) {
     return
     GestureDetector(
@@ -111,10 +109,12 @@ class _CentralNavButton extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(mdPadding),
                   margin:EdgeInsets.only(bottom: height10),
-                  child: Icon(
-                    Icons.contactless_outlined,
-                    color: Colors.white,
-                    size: width10,
+                  child: IconButton(
+                    onPressed: (){
+                          Navigator.pushReplacementNamed(context, '/nfcTest');
+                          },
+                          icon: Icon(Icons.contactless_outlined),
+                          color: Colors.white,
                   )
               )
           ),

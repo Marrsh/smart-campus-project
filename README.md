@@ -1,6 +1,6 @@
-# student_companion
+# student_companion_java
 
-A smart campus app that will make use of NFC technology to aid students around campus.
+A new Flutter project.
 
 ## Getting Started
 

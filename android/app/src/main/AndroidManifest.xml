@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.christopher_marsh.student_companion">
-    <uses-permission android:name="android.permission.NFC"/>
+    package="com.example.student_companion_java">
    <application
-        android:label="student_companion"
+        android:label="student_companion_java"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
