@@ -28,8 +28,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   # nfc_manager: ^3.1.0
-  page_transition: "^1.1.6"
-  flutter_nfc_kit: "^3.2.0"
+  page_transition: "^2.0.5"
+  firebase_core: ^1.13.1
+  cloud_firestore: ^3.1.10
+  nfc_in_flutter:
+    git:
+      url: https://github.com/vilvic/nfc_in_flutter
+      ref: master
   flutter:
     sdk: flutter
 
