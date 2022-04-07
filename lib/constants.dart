@@ -1,15 +1,9 @@
 // import 'package:flutter/cupertino.dart';
 import 'dart:ui';
 
-const String SUCCESS_MESSAGE=" You will be contacted by us very soon.";
+const String SUCCESS_MESSAGE = " You will be contacted by us very soon.";
 
-enum Page {
-  Timetable,
-  ID,
-  NFC,
-  Rooms,
-  Library
-}
+enum Page { Timetable, ID, NFC, Rooms, Library }
 
 var physicalScreenSize = window.physicalSize;
 var pixelRatio = window.devicePixelRatio;
@@ -32,12 +26,11 @@ var height5 = logicalScreenSize.height * 0.05;
 var height10 = logicalScreenSize.height * 0.1;
 var height15 = logicalScreenSize.height * 0.15;
 var height50 = logicalScreenSize.height * 0.5;
-
+var height40 = logicalScreenSize.height * 0.4;
 
 const smPadding = 5.0;
 const mdPadding = 15.0;
 const lgPadding = 30.0;
-
 
 const blue = const Color(0xFF007AFF);
 const orange = const Color(0xFFFFB900);

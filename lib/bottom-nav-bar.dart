@@ -132,7 +132,8 @@ class _CentralNavButton extends StatelessWidget {
                   // iconSize: 30,
                   onPressed: () {
                     // NFCReader();
-                    Navigator.pop(context, '/nfcTest');
+                    // nfclol();
+                    // ));
                   },
                   icon: Icon(Icons.contactless_outlined),
                   color: Colors.white,
@@ -141,3 +142,10 @@ class _CentralNavButton extends StatelessWidget {
     );
   }
 }
+
+// nfclol() {
+//   return SimpleDialog(
+//     title: Text('testing popup'),
+//     children: [Text("test")],
+//   );
+// }

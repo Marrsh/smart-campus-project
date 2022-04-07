@@ -17,7 +17,6 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,9 +48,10 @@ class MyApp extends StatelessWidget {
                 type: PageTransitionType.fade,
                 duration: const Duration(seconds: 0));
             break;
-          case '/nfcTest':
-            NFCReader();
-            break;
+          // case '/nfcTest':
+
+          //   // NFCReader();
+          //   break;
 
           default:
             return null;
